@@ -10,9 +10,9 @@ function App() {
   useEffect(() => {
     // Classic lerp - 10% of remaining distance each frame
     // This is the standard smooth-follow pattern used in interactive landing pages
-    const ease = 0.06
+    const ease = 0.8
     // How far the gradient travels (subtle)
-    const range = 0.15
+    const range = 1.0
 
     const handleMouseMove = (e) => {
       const centerX = window.innerWidth / 2
