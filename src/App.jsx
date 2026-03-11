@@ -8,13 +8,13 @@ function App() {
   const rafRef = useRef(null)
 
   useEffect(() => {
-    // Classic lerp - 10% of remaining distance each frame
-    // This is the standard smooth-follow pattern used in interactive landing pages
-    const ease = 0.8
-    // How far the gradient travels (subtle)
+    const easeFollow = 0.05
+    const easeReset = 0.03
     const range = 1.0
+    let isOutside = false
 
     const handleMouseMove = (e) => {
+      isOutside = false
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
       mouseRef.current.x = (e.clientX - centerX) * range
@@ -22,6 +22,7 @@ function App() {
     }
 
     const handleMouseLeave = () => {
+      isOutside = true
       mouseRef.current.x = 0
       mouseRef.current.y = 0
     }
@@ -29,8 +30,8 @@ function App() {
     const animate = () => {
       const cur = currentRef.current
       const target = mouseRef.current
+      const ease = isOutside ? easeReset : easeFollow
 
-      // Lerp: move 8% closer to target each frame
       cur.x += (target.x - cur.x) * ease
       cur.y += (target.y - cur.y) * ease
 
@@ -67,8 +68,8 @@ function App() {
 
       {/* Center content */}
       <div className="content">
-        <h1 className="logo-text">LETSRALLY</h1>
-        <p className="subtitle">Coming Fall 2025</p>
+        <img src="/logo.svg" alt="LETSRALLY" className="logo-img" />
+        <p className="subtitle">Coming Fall 2026</p>
         <p className="location">Miami, Florida</p>
       </div>
     </div>

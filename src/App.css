@@ -16,6 +16,8 @@
   height: 150%;
   z-index: 0;
   will-change: transform;
+  filter: blur(200px);
+  -webkit-filter: blur(200px);
 }
 
 .blob {
@@ -72,8 +74,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(200px);
-  -webkit-backdrop-filter: blur(200px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   z-index: 1;
 }
 
@@ -90,23 +92,18 @@
 }
 
 /* Logo */
-.logo-text {
-  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
-  font-size: 96px;
-  font-weight: 400;
-  letter-spacing: 18px;
-  color: #F5F3EF;
-  text-transform: uppercase;
-  line-height: 1;
-  margin-bottom: 24px;
-  text-align: center;
+.logo-img {
+  width: 100%;
+  max-width: 527px;
+  height: auto;
+  margin-bottom: 18px;
 }
 
 /* Subtitle - Coming Fall 2025 */
 .subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 26px;
-  font-weight: 500;
+  font-family: 'Sora', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
   color: #F5F3EF;
   letter-spacing: 1.5px;
   margin-bottom: 16px;
@@ -115,8 +112,8 @@
 
 /* Location - Miami, Florida */
 .location {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 22px;
   font-weight: 400;
   color: #F5F3EF;
   letter-spacing: 0.5px;
@@ -141,9 +138,8 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .logo-text {
-    font-size: 56px;
-    letter-spacing: 10px;
+  .logo-img {
+    width: 300px;
   }
 
   .subtitle {
