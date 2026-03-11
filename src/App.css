@@ -1,0 +1,176 @@
+/* ===== FULL PAGE CONTAINER ===== */
+.page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000000;
+}
+
+/* ===== GRADIENT BLOBS LAYER ===== */
+.gradient-layer {
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  z-index: 0;
+  will-change: transform;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Green blob - center */
+.blob.green {
+  width: 1241px;
+  height: 1085px;
+  background: #3B452E;
+  left: calc(38% - 620px);
+  top: calc(55% - 542px);
+  transform: rotate(100.21deg);
+}
+
+/* Purple blob - left */
+.blob.purple {
+  width: 663px;
+  height: 1381px;
+  background: #B567C4;
+  left: calc(19.5% - 331px);
+  top: calc(47.7% - 690px);
+  transform: rotate(43.74deg);
+}
+
+/* Blue blob - bottom right */
+.blob.blue {
+  width: 1226px;
+  height: 977px;
+  background: #04275A;
+  left: calc(80% - 613px);
+  top: calc(78.5% - 488px);
+  transform: rotate(27.47deg);
+}
+
+/* Orange blob - top right */
+.blob.orange {
+  width: 1108px;
+  height: 503px;
+  background: #EB6B0F;
+  left: calc(67.7% - 554px);
+  top: calc(30.7% - 252px);
+  transform: rotate(27.47deg);
+}
+
+/* ===== BLUR OVERLAY ===== */
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(200px);
+  -webkit-backdrop-filter: blur(200px);
+  z-index: 1;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo */
+.logo-text {
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-size: 96px;
+  font-weight: 400;
+  letter-spacing: 18px;
+  color: #F5F3EF;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Subtitle - Coming Fall 2025 */
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #F5F3EF;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Location - Miami, Florida */
+.location {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #F5F3EF;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Copyright */
+.copyright {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #F5F3EF;
+  opacity: 0.6;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .logo-text {
+    font-size: 56px;
+    letter-spacing: 10px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .location {
+    font-size: 14px;
+  }
+
+  .blob.green {
+    width: 800px;
+    height: 700px;
+  }
+
+  .blob.purple {
+    width: 400px;
+    height: 900px;
+  }
+
+  .blob.blue {
+    width: 800px;
+    height: 640px;
+  }
+
+  .blob.orange {
+    width: 700px;
+    height: 320px;
+  }
+}
