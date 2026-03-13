@@ -21,6 +21,32 @@ function App() {
       mouseRef.current.y = (e.clientY - centerY) * range
     }
 
+    const handleTouchStart = (e) => {
+      e.preventDefault()
+      isOutside = false
+      const touch = e.touches[0]
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
+      mouseRef.current.x = (touch.clientX - centerX) * range
+      mouseRef.current.y = (touch.clientY - centerY) * range
+    }
+
+    const handleTouchMove = (e) => {
+      e.preventDefault()
+      isOutside = false
+      const touch = e.touches[0]
+      const centerX = window.innerWidth / 2
+      const centerY = window.innerHeight / 2
+      mouseRef.current.x = (touch.clientX - centerX) * range
+      mouseRef.current.y = (touch.clientY - centerY) * range
+    }
+
+    const handleTouchEnd = () => {
+      isOutside = true
+      mouseRef.current.x = 0
+      mouseRef.current.y = 0
+    }
+
     const handleMouseLeave = () => {
       isOutside = true
       mouseRef.current.x = 0
@@ -43,11 +69,19 @@ function App() {
     }
 
     window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('touchstart', handleTouchStart, { passive: false })
+    window.addEventListener('touchmove', handleTouchMove, { passive: false })
+    window.addEventListener('touchend', handleTouchEnd)
+    window.addEventListener('touchcancel', handleTouchEnd)
     document.addEventListener('mouseleave', handleMouseLeave)
     rafRef.current = requestAnimationFrame(animate)
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchmove', handleTouchMove)
+      window.removeEventListener('touchend', handleTouchEnd)
+      window.removeEventListener('touchcancel', handleTouchEnd)
       document.removeEventListener('mouseleave', handleMouseLeave)
       cancelAnimationFrame(rafRef.current)
     }
@@ -57,10 +91,12 @@ function App() {
     <div className="page">
       {/* Gradient blobs */}
       <div className="gradient-layer" ref={layerRef}>
-        <div className="blob green" />
+       <div className="blob orange" />
+       <div className="blob blue" />
         <div className="blob purple" />
-        <div className="blob blue" />
-        <div className="blob orange" />
+         <div className="blob green" />
+        
+       
       </div>
 
       {/* Blur overlay */}

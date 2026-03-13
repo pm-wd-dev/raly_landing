@@ -29,42 +29,46 @@
 
 /* Green blob - center */
 .blob.green {
-  width: 1241px;
-  height: 1085px;
+  width: 50%;
+  height: 50%;
   background: #3B452E;
-  left: calc(38% - 620px);
-  top: calc(55% - 542px);
-  transform: rotate(100.21deg);
+  left: 12%;
+  top: 50%;
+  transform: rotate(126deg);
+  z-index: 7;
 }
 
 /* Purple blob - left */
 .blob.purple {
-  width: 663px;
-  height: 1381px;
+  width: 100%;
+  height: 70%;
   background: #B567C4;
-  left: calc(19.5% - 331px);
-  top: calc(47.7% - 690px);
-  transform: rotate(43.74deg);
+  left: -40%;
+  top: 18%;
+  transform: rotate(325deg);
+  z-index: 6;
 }
 
 /* Blue blob - bottom right */
 .blob.blue {
-  width: 1226px;
-  height: 977px;
+  width: 70%;
+  height: 70%;
   background: #04275A;
-  left: calc(80% - 613px);
-  top: calc(78.5% - 488px);
-  transform: rotate(27.47deg);
+  left: 40%;
+  top: 56%;
+  transform: rotate(0deg);
+  z-index: 5;
 }
 
 /* Orange blob - top right */
 .blob.orange {
-  width: 1108px;
-  height: 503px;
+  width: 70%;
+  height: 70%;
   background: #EB6B0F;
-  left: calc(67.7% - 554px);
-  top: calc(30.7% - 252px);
+  left: 40%;
+  top: -10%;
   transform: rotate(27.47deg);
+  z-index: 4;
 }
 
 /* ===== BLUR OVERLAY ===== */
@@ -139,7 +143,7 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .logo-img {
-    width: 300px;
+    width: 270px;
   }
 
   .subtitle {
@@ -150,23 +154,77 @@
     font-size: 14px;
   }
 
-  .blob.green {
-    width: 800px;
-    height: 700px;
-  }
+    /* .blob.orange {
+        width: 90%;
+        height: 50%;
+        left: 46%;
+        top: 12%;
+        transform: rotate(-11.53deg);
+    }
 
-  .blob.purple {
-    width: 400px;
-    height: 900px;
-  }
+.blob.blue {
+    width: 90%;
+    height: 50%;
+    left: 51%;
+    top: 66%;
+    transform: rotate(0deg);
+}
+    .blob.purple {
+        width: 120%;
+        height: 50%;
+        left: -76%;
+        top: 8%;
+        transform: rotate(325deg);
+    }
 
-  .blob.blue {
-    width: 800px;
-    height: 640px;
-  }
+     .blob.green {
+        width: 60%;
+        height: 40%;
+        left: -24%;
+        top: 40%;
+        transform: rotate(126deg);
+    }
+  .gradient-layer {
+    filter: blur(100px);
+    -webkit-filter: blur(100px);
+} */
+}
 
+
+@media (max-width: 575px) {
   .blob.orange {
-    width: 700px;
-    height: 320px;
-  }
+        width: 90%;
+        height: 50%;
+        left: 46%;
+        top: 12%;
+        transform: rotate(-11.53deg);
+    }
+
+    .blob.blue {
+        width: 90%;
+        height: 50%;
+        left: 46%;
+        top: 50%;
+        transform: rotate(0deg);
+    }
+     .blob.purple {
+        width: 100%;
+        height: 100%;
+        left: -63%;
+        top: -13%;
+        transform: rotate(269deg);
+    }
+
+        .blob.green {
+        width: 60%;
+        height: 30%;
+        left: 10%;
+        top: 42%;
+        transform: rotate(126deg);
+    }
+  .gradient-layer {
+    filter: blur(110px);
+    -webkit-filter: blur(110px);
+}
+
 }
