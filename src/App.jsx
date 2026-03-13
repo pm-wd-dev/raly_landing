@@ -12,13 +12,6 @@ function App() {
     const easeReset = 0.03
     const range = 1.0
     let isInteracting = false
-    let breatheTime = 0
-    const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-
-    // Breathing config (mobile only)
-    const breatheSpeed = 0.005
-    const breatheRangeX = 80
-    const breatheRangeY = 50
 
     const handleMouseMove = (e) => {
       isInteracting = true
@@ -63,31 +56,13 @@ function App() {
     const animate = () => {
       const cur = currentRef.current
       const target = mouseRef.current
+      const ease = isInteracting ? easeFollow : easeReset
 
-      if (isInteracting) {
-        // Follow cursor/finger
-        cur.x += (target.x - cur.x) * easeFollow
-        cur.y += (target.y - cur.y) * easeFollow
-      } else if (isMobile) {
-        // Breathing effect on mobile only — gentle infinite motion
-        breatheTime += breatheSpeed
-        const breatheX = Math.sin(breatheTime) * breatheRangeX
-        const breatheY = Math.cos(breatheTime * 0.7) * breatheRangeY
-        cur.x += (breatheX - cur.x) * easeReset
-        cur.y += (breatheY - cur.y) * easeReset
-      } else {
-        // Desktop — ease back to center
-        cur.x += (target.x - cur.x) * easeReset
-        cur.y += (target.y - cur.y) * easeReset
-      }
+      cur.x += (target.x - cur.x) * ease
+      cur.y += (target.y - cur.y) * ease
 
       if (layerRef.current) {
-        if (!isInteracting && isMobile) {
-          const scale = 1 + Math.sin(breatheTime * 0.5) * 0.03
-          layerRef.current.style.transform = `translate(${cur.x}px, ${cur.y}px) scale(${scale})`
-        } else {
-          layerRef.current.style.transform = `translate(${cur.x}px, ${cur.y}px)`
-        }
+        layerRef.current.style.transform = `translate(${cur.x}px, ${cur.y}px)`
       }
 
       rafRef.current = requestAnimationFrame(animate)
@@ -120,8 +95,6 @@ function App() {
        <div className="blob blue" />
         <div className="blob purple" />
          <div className="blob green" />
-        
-       
       </div>
 
       {/* Blur overlay */}
