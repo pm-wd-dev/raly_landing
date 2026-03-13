@@ -11,10 +11,17 @@ function App() {
     const easeFollow = 0.05
     const easeReset = 0.03
     const range = 1.0
-    let isOutside = false
+    let isInteracting = false
+    let breatheTime = 0
+    const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+
+    // Breathing config (mobile only)
+    const breatheSpeed = 0.005
+    const breatheRangeX = 80
+    const breatheRangeY = 50
 
     const handleMouseMove = (e) => {
-      isOutside = false
+      isInteracting = true
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
       mouseRef.current.x = (e.clientX - centerX) * range
@@ -23,7 +30,7 @@ function App() {
 
     const handleTouchStart = (e) => {
       e.preventDefault()
-      isOutside = false
+      isInteracting = true
       const touch = e.touches[0]
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
@@ -33,7 +40,7 @@ function App() {
 
     const handleTouchMove = (e) => {
       e.preventDefault()
-      isOutside = false
+      isInteracting = true
       const touch = e.touches[0]
       const centerX = window.innerWidth / 2
       const centerY = window.innerHeight / 2
@@ -42,13 +49,13 @@ function App() {
     }
 
     const handleTouchEnd = () => {
-      isOutside = true
+      isInteracting = false
       mouseRef.current.x = 0
       mouseRef.current.y = 0
     }
 
     const handleMouseLeave = () => {
-      isOutside = true
+      isInteracting = false
       mouseRef.current.x = 0
       mouseRef.current.y = 0
     }
@@ -56,13 +63,31 @@ function App() {
     const animate = () => {
       const cur = currentRef.current
       const target = mouseRef.current
-      const ease = isOutside ? easeReset : easeFollow
 
-      cur.x += (target.x - cur.x) * ease
-      cur.y += (target.y - cur.y) * ease
+      if (isInteracting) {
+        // Follow cursor/finger
+        cur.x += (target.x - cur.x) * easeFollow
+        cur.y += (target.y - cur.y) * easeFollow
+      } else if (isMobile) {
+        // Breathing effect on mobile only — gentle infinite motion
+        breatheTime += breatheSpeed
+        const breatheX = Math.sin(breatheTime) * breatheRangeX
+        const breatheY = Math.cos(breatheTime * 0.7) * breatheRangeY
+        cur.x += (breatheX - cur.x) * easeReset
+        cur.y += (breatheY - cur.y) * easeReset
+      } else {
+        // Desktop — ease back to center
+        cur.x += (target.x - cur.x) * easeReset
+        cur.y += (target.y - cur.y) * easeReset
+      }
 
       if (layerRef.current) {
-        layerRef.current.style.transform = `translate(${cur.x}px, ${cur.y}px)`
+        if (!isInteracting && isMobile) {
+          const scale = 1 + Math.sin(breatheTime * 0.5) * 0.03
+          layerRef.current.style.transform = `translate(${cur.x}px, ${cur.y}px) scale(${scale})`
+        } else {
+          layerRef.current.style.transform = `translate(${cur.x}px, ${cur.y}px)`
+        }
       }
 
       rafRef.current = requestAnimationFrame(animate)

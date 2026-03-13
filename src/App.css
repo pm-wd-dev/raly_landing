@@ -153,41 +153,6 @@
   .location {
     font-size: 14px;
   }
-
-    /* .blob.orange {
-        width: 90%;
-        height: 50%;
-        left: 46%;
-        top: 12%;
-        transform: rotate(-11.53deg);
-    }
-
-.blob.blue {
-    width: 90%;
-    height: 50%;
-    left: 51%;
-    top: 66%;
-    transform: rotate(0deg);
-}
-    .blob.purple {
-        width: 120%;
-        height: 50%;
-        left: -76%;
-        top: 8%;
-        transform: rotate(325deg);
-    }
-
-     .blob.green {
-        width: 60%;
-        height: 40%;
-        left: -24%;
-        top: 40%;
-        transform: rotate(126deg);
-    }
-  .gradient-layer {
-    filter: blur(100px);
-    -webkit-filter: blur(100px);
-} */
 }
 
 
@@ -195,7 +160,7 @@
   .blob.orange {
         width: 90%;
         height: 50%;
-        left: 46%;
+        left: 26%;
         top: 12%;
         transform: rotate(-11.53deg);
     }
@@ -210,7 +175,7 @@
      .blob.purple {
         width: 100%;
         height: 100%;
-        left: -63%;
+        left: -83%;
         top: -13%;
         transform: rotate(269deg);
     }
@@ -223,8 +188,8 @@
         transform: rotate(126deg);
     }
   .gradient-layer {
-    filter: blur(110px);
-    -webkit-filter: blur(110px);
+    filter: blur(80px);
+    -webkit-filter: blur(80px);
 }
 
 }
