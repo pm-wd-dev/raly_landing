@@ -162,7 +162,7 @@
         height: 50%;
         left: 26%;
         top: 12%;
-        animation: breathe-orange 4s ease-in-out infinite;
+        animation: breathe-orange 6s ease-in-out infinite;
     }
 
     .blob.blue {
@@ -170,14 +170,14 @@
         height: 50%;
         left: 46%;
         top: 50%;
-        animation: breathe-blue 5s ease-in-out infinite;
+        animation: breathe-blue 7s ease-in-out infinite;
     }
      .blob.purple {
         width: 100%;
         height: 100%;
         left: -83%;
         top: -13%;
-        animation: breathe-purple 6s ease-in-out infinite;
+        animation: breathe-purple 9s ease-in-out infinite;
     }
 
         .blob.green {
@@ -185,7 +185,7 @@
         height: 30%;
         left: 10%;
         top: 42%;
-        animation: breathe-green 4.5s ease-in-out infinite;
+        animation: breathe-green 7s ease-in-out infinite;
     }
   .gradient-layer {
     filter: blur(80px);
